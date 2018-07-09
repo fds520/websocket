@@ -2,6 +2,7 @@ package com.example.websocket;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.TextMessage;
@@ -18,11 +19,11 @@ public class DemoController {
     @Autowired
     private WebSocketPushHandler webSocketPushHandler;
 
-    @GetMapping("/test")
-    public void test() {
+    @GetMapping("/test/{userId}")
+    public void test(@PathVariable(value = "userId") String userId) {
 
         System.out.println("测试竟来了");
         TextMessage textMessage = new TextMessage("后台主动推送消息".getBytes());
-        webSocketPushHandler.sendMessageToUser("wrwefesdfwetrwe324324", textMessage);
+        webSocketPushHandler.sendMessageToUser(userId, textMessage);
     }
 }
