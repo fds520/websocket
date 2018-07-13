@@ -40,11 +40,11 @@ public class WebSocketPushHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         logger.info("系统处理xxx用户的请求信息。。。");
         Map<String, Object> map = session.getAttributes();
-        if ("wrwefesdfwetrwe324324".equals(map.get("userId"))) {
+        if ("123".equals(map.get("userId"))) {
 
             byte[] chars = "你好世界".getBytes();
             TextMessage textMessage = new TextMessage(chars);
-            sendMessageToUser("wrwefesdfwetrwe324324", textMessage);
+            sendMessageToUser("123", textMessage);
         }
     }
 
